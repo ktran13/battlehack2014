@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'restangular'
+    'restangular',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -24,11 +25,15 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/search', {
+        templateUrl: 'views/discover.html',
+        controller: 'DiscoverCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function(RestangularProvider) {
+    RestangularProvider.setBaseUrl('http://www.google.com');
   });
+

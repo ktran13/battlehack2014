@@ -21,19 +21,19 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
+      <div class="header" data-ng-controller="NavCtrl as navCtrl">
+        <ul class="nav nav-pills pull-right" data-ng-show="navCtrl.showNav">
+          <li><a ng-href="#">Home</a></li>
+          <li><a ng-href="#/search">Search</a></li>
+          <li><a ng-href="#/contact">Contact</a></li>
         </ul>
-        <h3 class="text-muted">battlehackApp</h3>
+        <h3 class="text-muted">Fundmatch</h3>
       </div>
 
       <div ng-view=""></div>
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p>Made With <span class="glyphicon glyphicon-heart"></span> At Battlehack Boston 2014</p>
       </div>
     </div>
 
@@ -67,14 +67,18 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/features/navigation/navCtrl.js"></script>
         <script src="scripts/features/main/mainCtrl.js"></script>
-        <script src="scripts/features/about/aboutCtrl.js"></script>
-        <script src="scripts/shared/services/venmoService.js"></script>
+        <script src="scripts/features/discover/discoverCtrl.js"></script>
+        <script src="scripts/shared/services/paypalService.js"></script>
+        <script src="scripts/shared/services/sharethisService.js"></script>
+        <script src="scripts/shared/services/dataService.js"></script>
         <!-- endbuild -->
 </body>
 </html>
