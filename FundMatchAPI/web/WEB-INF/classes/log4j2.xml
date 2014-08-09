@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <RollingFile name="RollingFile" fileName="/home/ubuntu/apache-tomee-plus-1.6.0/logs/fundmatch.log"
+            filePattern="/home/ubuntu/apache-tomee-plus-1.6.0/logs/$${date:yyyy-MM}/fundmatch-%d{MM-dd-yyyy}-%i.log">
+            <PatternLayout>
+                <pattern>%d %p %C{1.} [%t] %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="250 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingFile>
+        <Syslog name="syslog" host="localhost" port="514" protocol="UDP">
+            <PatternLayout pattern="WAR %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Syslog>
+    </appenders>
+    <loggers>
+        <Root level="trace">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+            <appender-ref ref="syslog" />
+        </Root>
+        <logger name="com.twiage" level="trace" additivity="false">
+            <appender-ref ref="Console" />
+            <appender-ref ref="RollingFile" />
+            <appender-ref ref="syslog" />
+        </logger>
+    </loggers>
+</configuration>
