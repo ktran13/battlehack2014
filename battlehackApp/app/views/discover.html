@@ -1,14 +1,9 @@
 <h4>Discover Non-profits</h4>
 
 Search: <input ng-model="searchText">
-<table id="searchTextResults">
-  <tr><th>Name</th><th>Phone</th></tr>
-  <tr ng-repeat="friend in discoverCtrl.friends | filter:searchText">
-    <td>{{friend.name}}</td>
-    <td>{{friend.phone}}</td>
-    <script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=kristiantran-facilitator@gmail.com" 
-    data-button="donate" 
-    data-callback="http://fundmatch.org/battlehack" 
-    data-env="sandbox"></script>
-  </tr>
-</table>
+
+<div data-ng-repeat="nonprofit in discoverCtrl.nonprofits | filter:searchText | limitTo: 20">
+	<p>Nonprofit: {{ nonprofit.name }}</p>
+	<p>Address: {{ nonprofit.address }}</p>
+	<p>Mission: {{ nonprofit.mission }}</p>
+</div>
