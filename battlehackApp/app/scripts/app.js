@@ -16,19 +16,32 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'restangular'
+    'restangular',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl as mainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/search', {
+        templateUrl: 'views/discover.html',
+        controller: 'DiscoverCtrl as discoverCtrl'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'contactCtrl as contactCtrl'
+      })
+      .when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'profileCtrl as profileCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function(RestangularProvider) {
+    RestangularProvider.setBaseUrl('http://fundmatch.org:8080/FundMatchAPI/v1/');
   });
+
