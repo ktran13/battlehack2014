@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name battlehackAppApp
+ * @name battlehackApp
  * @description
- * # battlehackAppApp
+ * # battlehackApp
  *
  * Main module of the application.
  */
 angular
-  .module('battlehackAppApp', [
+  .module('battlehackApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
