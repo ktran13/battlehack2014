@@ -26,8 +26,14 @@ angular.module('battlehackApp')
   		return 'data test';
   	};
 
+    var getDatabase = function() {
+      $log.debug('got database call');
+      return Restangular.one('QueryServlet').get();
+    };
+
   	return {
-  		test: test
+  		test: test,
+      getDatabase: getDatabase
   	};
 
   });

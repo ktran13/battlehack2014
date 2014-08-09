@@ -23,17 +23,25 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl as mainCtrl'
       })
       .when('/search', {
         templateUrl: 'views/discover.html',
-        controller: 'DiscoverCtrl'
+        controller: 'DiscoverCtrl as discoverCtrl'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'contactCtrl as contactCtrl'
+      })
+      .when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'profileCtrl as profileCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
   })
   .config(function(RestangularProvider) {
-    RestangularProvider.setBaseUrl('http://www.google.com');
+    RestangularProvider.setBaseUrl('http://fundmatch.org:8080/FundMatchAPI/v1/');
   });
 

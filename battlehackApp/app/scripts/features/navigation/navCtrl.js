@@ -9,11 +9,11 @@
  * Controller of the battlehackApp
  */
   var controllerId = 'NavCtrl';
-  var navCtrl = function ($log, $scope, $rootScope, $location, dataService, paypalService, sharethisService) {
+  var navCtrl = function () {
     var navCtrl = this;
 
     navCtrl.showNav = true;
-    
+
     // $rootScope.$on('$routeChangeSuccess', function() {
     //   var location = $location.$$path;
     //   if(location === '/') {
