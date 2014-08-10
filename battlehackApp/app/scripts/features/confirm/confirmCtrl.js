@@ -23,6 +23,7 @@
 
     if(confirmed) {
       confirmCtrl.showExecuteButton = true;
+      confirmCtrl.donationName = dataService.getDonationName();
     }
 
     confirmCtrl.execute = function(payerId) {
@@ -30,7 +31,6 @@
         $log.debug('success in payment');
         $log.debug(data);
         confirmCtrl.purchasingdata = data;
-        confirmCtrl.donationName = dataService.getDonationName();
         confirmCtrl.showExecuteButton = false;
         confirmCtrl.showThankyouView = true;
       }, function(error) {

@@ -27,6 +27,8 @@ angular.module('battlehackApp')
 
     var tokenLs = localStorageService.get('authToken');
 
+    var authToken = (tokenLs) ? {'value': tokenLs} : {};
+
   	var getAuthToken = function() {
   		authPaypalRestangular.one('token').customPOST('grant_type=client_credentials',
         '', {}, {
@@ -45,8 +47,6 @@ angular.module('battlehackApp')
         $log.debug('error');
       });
   	};
-
-    var authToken = (tokenLs) ? {'value': tokenLs} : getAuthToken();
 
     var setupPayment = function(merchant, merchantId, amount) {
       var id = merchantId;

@@ -9,7 +9,7 @@
  * Controller of the battlehackApp
  */
   var controllerId = 'NavCtrl';
-  var navCtrl = function ($log, $location, paypalService) {
+  var navCtrl = function ($log, $rootScope, $location, paypalService) {
     var navCtrl = this;
 
     navCtrl.showNav = true;
@@ -34,6 +34,7 @@
 
   angular.module('battlehackApp').controller(controllerId, [
     '$log',
+    '$rootScope',
     '$location',
     'paypalService',
     navCtrl

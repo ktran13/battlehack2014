@@ -1,6 +1,11 @@
-<button type="button" data-ng-show="confirmCtrl.showExecuteButton" data-ng-click="confirmCtrl.execute(confirmCtrl.payerId)" class="btn btn-info">Confirm Your Donation for {{ confirmCtrl.amount | currency}}</button>
+<div class="confirmed">
+	<div class="center-block" data-ng-show="confirmCtrl.showExecuteButton">
+	<h4>{{ confirmCtrl.donationName }}</h4>
+	<button type="button" data-ng-click="confirmCtrl.execute(confirmCtrl.payerId)" class="btn btn-info">Confirm Your Donation for {{ confirmCtrl.amount | currency}}</button>
+	</div>
 
-<div data-ng-show="confirmCtrl.showThankyouView">
-	<h3>Thank you for donating {{ confirmCtrl.purchasingdata.transactions[0].amount.total | currency }} to {{ confirmCtrl.donationName }}!</h3>
-	<button type="button" data-ng-click="confirmCtrl.discover()" class="btn btn-info">Discover More Organizations</button>
+	<div class="center-block" data-ng-show="confirmCtrl.showThankyouView">
+		<h3>Thank you for donating {{ confirmCtrl.purchasingdata.transactions[0].amount.total | currency }} to {{ confirmCtrl.donationName }}!</h3>
+		<button type="button" data-ng-click="confirmCtrl.discover()" class="btn btn-info">Discover More Organizations</button>
+	</div>
 </div>

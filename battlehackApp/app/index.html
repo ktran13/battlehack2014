@@ -24,7 +24,6 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="cover"></div>
     <div class="fluid-container">   
       <div class="header navbar-fixed-top" data-ng-controller="NavCtrl as navCtrl">
        
@@ -59,10 +58,10 @@
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
+    <script src="bower_components/angular/angular.js"></script>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js"></script>
     <script src="bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js"></script>
@@ -89,7 +88,6 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/features/navigation/navCtrl.js"></script>
         <script src="scripts/features/main/mainCtrl.js"></script>
@@ -100,6 +98,8 @@
         <script src="scripts/shared/services/paypalService.js"></script>
         <script src="scripts/shared/services/sharethisService.js"></script>
         <script src="scripts/shared/services/dataService.js"></script>
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <!-- endbuild -->
 </body>
 </html>

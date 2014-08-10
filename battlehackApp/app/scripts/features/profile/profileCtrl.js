@@ -22,6 +22,14 @@
       profileCtrl.showDonateButton = true;
     }
 
+    var merchant = $routeParams.id;
+    $log.debug(merchant);
+    if(merchant) {
+      dataService.getNonprofit(merchant).then(function(data) {
+        profileCtrl.nonprofit = data.results[0];
+      });
+    }
+
     profileCtrl.approve = function() {
       var approveUrl = localStorageService.get('approve');
       $window.location.href = approveUrl;
@@ -33,7 +41,7 @@
       if(donationForm.$valid) {
         var merchantId = 123;
         var amount = profileCtrl.donation.donationAmount;
-        var merchant = 'fund name';
+        var merchant = profileCtrl.nonprofit.name;
         paypalService.setupPayment(merchant, merchantId, amount).then(function(data) {
           $log.debug('successfully donated');
           $log.debug(data);
