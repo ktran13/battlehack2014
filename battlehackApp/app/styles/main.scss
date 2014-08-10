@@ -1,7 +1,11 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+$fa-font-path: "/bower_components/font-awesome/fonts";
+@import "font-awesome/scss/font-awesome";
 // bower:scss
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
+@import url("http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans");
 
 .browsehappy {
   margin: 0.2em 0;
@@ -68,7 +72,7 @@ h1{
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  background:url("../images/triangles-bg.svg"); 
+  background:url("../images/triangles-bg.svg") no-repeat center center; 
   
   .btn {
     font-size: 21px;
