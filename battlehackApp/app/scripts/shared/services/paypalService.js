@@ -53,7 +53,7 @@ angular.module('battlehackApp')
         'intent': 'sale',
         'redirect_urls': {
           'return_url': 'http://localhost:9000/#/confirm?id='+id+'&confirm=true',
-          'cancel_url': 'http://localhost:9000/#/?id='+id+'&confirm=false'
+          'cancel_url': 'http://localhost:9000/#/profile?id='+id+'&confirm=false'
         },
         'payer': {
           'payment_method': 'paypal'
@@ -71,6 +71,20 @@ angular.module('battlehackApp')
       return paypalRestangular.one('payment').customPOST(request, '', {}, {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + authToken.value
+      }).then(function(data) {
+        $log.debug('successfully submitted');
+        $log.debug(data);
+        var confirmUrl = _.find(data.links, {'rel':'approval_url'}).href;
+        var executeUrl = _.find(data.links, {'rel':'execute'}).href;
+        localStorageService.add('approve', confirmUrl);
+        localStorageService.add('execute', executeUrl);
+        $log.debug(localStorageService.get('approve'));
+        $log.debug(localStorageService.get('execute'));
+        return data;
+      }, function(error) {
+        $log.debug(error);
+        $log.debug('error');
+        return $q.reject('error');
       });
     };
 
