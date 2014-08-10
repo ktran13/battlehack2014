@@ -3,11 +3,11 @@
 
 
 // Restangular service that uses sharethis as the base url and the associated configs
-angular.module('battlehackApp').factory('sharethisRestangular', function(Restangular) {
+angular.module('battlehackApp').factory('sharethisRestangular', ['Restangular', function(Restangular) {
   return Restangular.withConfig(function(RestangularConfigurer) {
     RestangularConfigurer.setBaseUrl('http://www.sharethis.com');
   });
-});
+}]);
 
 /**
  * @ngdoc function

@@ -21,14 +21,14 @@
       $location.url('/profile?id='+merchantId);
     };
 
-    // $rootScope.$on('$routeChangeSuccess', function() {
-    //   var location = $location.$$path;
-    //   if(location === '/') {
-    //     navCtrl.showNav = false;
-    //   } else {
-    //     navCtrl.showNav = true;
-    //   }
-    // });
+    $rootScope.$on('$routeChangeSuccess', function() {
+      var location = $location.$$path;
+      if(location === '/') {
+        navCtrl.showBackground = true;
+      } else {
+        navCtrl.showBackground = false;
+      }
+    });
 
   };
 
@@ -36,7 +36,6 @@
     '$log',
     '$location',
     'paypalService',
-    'sharethisService',
     navCtrl
   ]);
 

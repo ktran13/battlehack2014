@@ -1,1 +1,19 @@
-<div> <button type="button" data-ng-show="profileCtrl.showApproveButton" data-ng-click="profileCtrl.approve()" class="btn btn-info">Sign into Paypal</button> </div> <div data-ng-show="profileCtrl.showDonateButton"> <form class="form-inline" role="form" name="donationForm" novalidate> <div class="form-group"> <span data-ng-class="{'has-error': donationForm.donationAmount.$dirty && donationForm.donationAmount.$invalid }"> <div class="row"> <label for="donationAmount" class="col-sm-5 control-label">Please enter a value to donate: $</label> <div class="col-sm-5"> <input type="number" name="donationAmount" data-ng-model="profileCtrl.donation.donationAmount" data-ngmin="0" class="form-control" id="donationAmount" placeholder="0.00" required> </div> </div> </span> </div> <button type="button" data-ng-click="profileCtrl.donate(donationForm)" class="btn btn-info">Donate</button> </form> </div>
+<div>
+<button type="button" data-ng-show="profileCtrl.showApproveButton" data-ng-click="profileCtrl.approve()" class="btn btn-info">Sign into Paypal</button>
+</div>
+
+<div data-ng-show="profileCtrl.showDonateButton">
+<form class="form-inline" role="form" name="donationForm" novalidate>
+  <div class="form-group">
+  	<span data-ng-class="{'has-error': donationForm.donationAmount.$dirty && donationForm.donationAmount.$invalid }">
+	  	<div class="row">
+		    <label for="donationAmount" class="col-sm-5 control-label">Please enter a value to donate: $</label>
+		    <div class="col-sm-5">
+		    	<input type="number" name="donationAmount" data-ng-model="profileCtrl.donation.donationAmount" data-ngmin="0" class="form-control" id="donationAmount" placeholder="0.00" required>
+		    </div>
+	  	</div>
+  	</span>
+  </div>
+  <button type="button" data-ng-click="profileCtrl.donate(donationForm)" class="btn btn-info">Donate</button>
+</form>
+</div>

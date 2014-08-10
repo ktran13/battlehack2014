@@ -3,17 +3,17 @@
 
 
 // Restangular service that uses paypal as the base url and the associated configs
-angular.module('battlehackApp').factory('paypalRestangular', function(Restangular) {
+angular.module('battlehackApp').factory('paypalRestangular', ['Restangular', function(Restangular) {
   return Restangular.withConfig(function(RestangularConfigurer) {
     RestangularConfigurer.setBaseUrl('https://api.sandbox.paypal.com/v1/payments/');
   });
-});
+}]);
 
-angular.module('battlehackApp').factory('authPaypalRestangular', function(Restangular) {
+angular.module('battlehackApp').factory('authPaypalRestangular', ['Restangular', function(Restangular) {
   return Restangular.withConfig(function(RestangularConfigurer) {
     RestangularConfigurer.setBaseUrl('https://api.sandbox.paypal.com/v1/oauth2/');
   });
-});
+}]);
 
 /**
  * @ngdoc function
