@@ -11,17 +11,7 @@
   var controllerId = 'MainCtrl';
   var mainCtrl = function ($log, $scope, $location, $window, dataService, paypalService, sharethisService) {
 
-    var mainCtrl = this;
-
-    paypalService.getAuthToken();
-
-    mainCtrl.donate = function(merchantId, amount) {
-      paypalService.setupPayment(merchantId, amount).then(function() {
-        $log.debug('donating!');
-        //localStorageService.add('donate', )
-        $location.url('/profile?donate=true');
-      });
-    };
+    //var mainCtrl = this;
 
     $log.debug(sharethisService.test());
 

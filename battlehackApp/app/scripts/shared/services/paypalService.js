@@ -47,12 +47,12 @@ angular.module('battlehackApp')
       });
   	};
 
-    var setupPayment = function(merchantId, amount) {
+    var setupPayment = function(merchant, merchantId, amount) {
       var id = merchantId;
       var request = {
         'intent': 'sale',
         'redirect_urls': {
-          'return_url': 'http://localhost:9000/#/confirm?id='+id+'&confirm=true',
+          'return_url': 'http://localhost:9000/#/confirm?id='+id+'&confirm=true&amount='+amount.toString(),
           'cancel_url': 'http://localhost:9000/#/profile?id='+id+'&confirm=false'
         },
         'payer': {
@@ -78,6 +78,7 @@ angular.module('battlehackApp')
         var executeUrl = _.find(data.links, {'rel':'execute'}).href;
         localStorageService.add('approve', confirmUrl);
         localStorageService.add('execute', executeUrl);
+        localStorageService.add('donationName', merchant);
         $log.debug(localStorageService.get('approve'));
         $log.debug(localStorageService.get('execute'));
         return data;

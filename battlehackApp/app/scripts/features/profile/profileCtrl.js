@@ -27,13 +27,23 @@
       $window.location.href = approveUrl;
     };
 
-    profileCtrl.donate = function(merchantId, amount) {
-      paypalService.setupPayment(merchantId, amount).then(function(data) {
-        $log.debug('successfully donated');
-        $log.debug(data);
-        profileCtrl.showDonateButton = false;
-        profileCtrl.showApproveButton = true;
-      });
+    profileCtrl.donation = {};
+
+    profileCtrl.donate = function(donationForm) {
+      if(donationForm.$valid) {
+        var merchantId = 123;
+        var amount = profileCtrl.donation.donationAmount;
+        var merchant = 'fund name';
+        paypalService.setupPayment(merchant, merchantId, amount).then(function(data) {
+          $log.debug('successfully donated');
+          $log.debug(data);
+          profileCtrl.showDonateButton = false;
+          profileCtrl.showApproveButton = true;
+        });
+      } else {
+        donationForm.donationAmount.$dirty = true;
+        donationForm.donationAmount.$invalid = true;
+      }
     };
 
   };

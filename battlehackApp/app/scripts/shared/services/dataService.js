@@ -9,7 +9,9 @@
  * Service of the battlehackApp
  */
 angular.module('battlehackApp')
-  .service('dataService', function ($log, $http, Restangular) {
+  .service('dataService', function ($log, $http, Restangular, localStorageService) {
+
+    var nonprofits = null;
 
   	var test = function() {
   		  // var url = '/jsondata/blank.json';
@@ -26,14 +28,28 @@ angular.module('battlehackApp')
   		return 'data test';
   	};
 
+    var getNonprofit = function(id) {
+      return Restangular.one('QueryServlet').get({'id': id});
+    };
+
+    var getDonationName = function() {
+      return localStorageService.get('donationName');
+    };
+
     var getDatabase = function() {
       $log.debug('got database call');
-      return Restangular.one('QueryServlet').get();
+      return Restangular.one('QueryServlet').get().then(function(data) {
+        return data;
+      }, function(error) {
+        $log.debug('error loading non profit data...');
+      });
     };
 
   	return {
   		test: test,
-      getDatabase: getDatabase
+      getDatabase: getDatabase,
+      getNonprofit: getNonprofit,
+      getDonationName: getDonationName
   	};
 
   });

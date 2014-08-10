@@ -9,10 +9,17 @@
  * Controller of the battlehackApp
  */
   var controllerId = 'NavCtrl';
-  var navCtrl = function () {
+  var navCtrl = function ($log, $location, paypalService) {
     var navCtrl = this;
 
     navCtrl.showNav = true;
+
+    paypalService.getAuthToken();
+
+    navCtrl.donate = function() {
+      var merchantId = 'fm';
+      $location.url('/profile?id='+merchantId);
+    };
 
     // $rootScope.$on('$routeChangeSuccess', function() {
     //   var location = $location.$$path;
@@ -27,10 +34,7 @@
 
   angular.module('battlehackApp').controller(controllerId, [
     '$log',
-    '$scope',
-    '$rootScope',
     '$location',
-    'dataService',
     'paypalService',
     'sharethisService',
     navCtrl
