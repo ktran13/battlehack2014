@@ -12,7 +12,7 @@
   var discoverCtrl = function ($log, $scope, dataService, paypalService, sharethisService) {
 
     var discoverCtrl = this;
-
+    discoverCtrl.isCollapsed = false;
     $log.debug(paypalService.test());
     $log.debug(sharethisService.test());
 

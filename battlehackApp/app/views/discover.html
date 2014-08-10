@@ -3,7 +3,117 @@
 Search: <input ng-model="searchText">
 
 <div data-ng-repeat="nonprofit in discoverCtrl.nonprofits | filter:searchText | limitTo: 20">
-	<p>Nonprofit: {{ nonprofit.name }}</p>
-	<p>Address: {{ nonprofit.address }}</p>
-	<p>Mission: {{ nonprofit.mission }}</p>
+
+<div class="row">
+	<h3>{{ nonprofit.name }} | SCORE: {{ nonprofit.overall }}/70</h3><a href="{{nonprofit.website}}">{{nonprofit.website}}</a>  <p><i class="fa fa-map-marker"></i> Address: {{ nonprofit.address }} <i class="fa fa-phone"></i>| <i class="fa fa-user"></i> Leadership: {{ nonprofit.board_leadership }} | <i class="fa fa-user"></i> CEO: {{ nonprofit.ceo }} </p>
+</div>
+	
+	<div class="row">
+		<div class="col-lg-4">		
+			<h4>Mission</h4><hr> 
+			<p>{{ nonprofit.mission }}</p>
+			<img class="score-graph" src="{{ nonprofit.score_graph}}" />
+		</div>
+
+		<div class="col-lg-8">	
+			<h4>Income Statement {{ nonprofit.year_fye }}</h4><hr>
+			<div class="col-lg-6">
+				<table>
+ 				<tr>
+    				<th><h4>REVENUE</h4></th>
+   				 	<th></th>
+  				</tr>
+  				<tr>
+    				<td><h5>Contributions</h5></td>
+    				<td></td>
+  				</tr>
+  				<tr>
+   					<td>Contributions, Gifts &amp; Grants</td>
+    				<td>{{ nonprofit.cont_gifts_grants }}</td>
+  				</tr>
+  				<tr>
+    				<td>Federated Campaigns</td>
+   	 				<td>{{ nonprofit.federated_campaigns }}</td>
+  				</tr>
+  				<tr>
+    				<td>Related Organizations</td>
+    				<td>{{ nonprofit.related_orgs }}</td>
+  				</tr>
+  				<tr>
+    				<td>Government Grants</td>
+    				<td>{{ nonprofit.govt_grants }}</td>
+  				</tr>
+  				<tr>
+    				<td><h5> Total Contributions</h5></td>
+    				<td><h5>{{ nonprofit.total_contributions }}</h5></td>
+  				</tr>
+  				<tr>
+    				<td>Program Service Revenue</td>
+    				<td>{{ nonprofit.program_service_reven }}</td>
+  				</tr>
+  				<tr>
+    				<td><h5> Total Primary Revenue</h5></td>
+    				<td><h5>{{ nonprofit.total_primary_revenue }}</h5></td>
+  				</tr>
+  				<tr>
+    				<td>Other Revenue</td>
+    				<td>{{ nonprofit.other_revenue }}</td>
+  				</tr>
+  				<tr>
+    				<td>TOTAL REVENUE</td>
+    				<td><h4>{{ nonprofit.total_revenue }}</h4></td>
+    			</tr>
+				</table>
+			</div>	
+
+			<div class="col-lg-6">
+			
+				<table>
+  				<tr>
+    				<th><h4>EXPENSES</h4></th>
+    				<th></th>
+  				</tr>
+  				<tr>
+    				<td>Program Expenses</td>
+    				<td>{{nonprofit.program_expense}}</td>
+  				</tr>
+  				<tr>
+    				<td>Administrative Expenses</td>
+   				 	<td>{{nonprofit.admin_expense}}</td>
+  				</tr>
+  				<tr>
+    				<td>Fundraising Expenses</td>
+    				<td>{{nonprofit.fundraising_expense}}</td>
+  				</tr>
+  				<tr>
+   				 	<td><h4>TOTAL FUNCTIONAL EXPENSES</h4></td>
+    				<td><h4>{{nonprofit.total_func_expenses}}</h4></td>
+  				</tr>
+  				<tr>
+    				<td>Payments to Affiliates</td>
+    				<td>{{nonprofit.payments_affiliates}}</td>
+  				</tr>
+  				<tr>
+   	 				<td>Excess or (Deficit) this year</td>
+    				<td>{{nonprofit.excessordeficit_year}}</td>
+  				</tr>
+  				<tr>
+    				<td>Net Assets</td>
+    				<td>{{nonprofit.net_assets}}</td>
+  				</tr>
+				</table>
+			</div>
+
+
+			
+				
+			
+		</div>
+
+	</div>
+
+		
+
+	
+	<hr>
 </div>
