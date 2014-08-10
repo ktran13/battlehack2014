@@ -23,9 +23,10 @@ angular.module('battlehackApp').factory('authPaypalRestangular', function(Restan
  * Service of the battlehackApp
  */
 angular.module('battlehackApp')
-  .service('paypalService', function ($log, paypalRestangular, authPaypalRestangular) {
+  .service('paypalService', function ($log, $q, paypalRestangular, authPaypalRestangular, localStorageService) {
 
-    var authToken = {};
+    var tokenLs = localStorageService.get('authToken');
+    var authToken = (tokenLs) ? {'value': tokenLs} : getAuthToken();
 
   	var getAuthToken = function() {
   		authPaypalRestangular.one('token').customPOST('grant_type=client_credentials',
@@ -38,6 +39,8 @@ angular.module('battlehackApp')
         $log.debug('success');
         $log.debug(data);
         authToken.value = data.access_token;
+        localStorageService.add('authToken', authToken.value);
+        $log.debug(localStorageService.get('authToken'));
       }, function(error) {
         $log.debug(error);
         $log.debug('error');
@@ -49,8 +52,8 @@ angular.module('battlehackApp')
       var request = {
         'intent': 'sale',
         'redirect_urls': {
-          'return_url': 'http://localhost:9000/profile?id='+id+'&confirm=true',
-          'cancel_url': 'http://localhost:9000/profile?id='+id+'&confirm=false'
+          'return_url': 'http://localhost:9000/#/confirm?id='+id+'&confirm=true',
+          'cancel_url': 'http://localhost:9000/#/?id='+id+'&confirm=false'
         },
         'payer': {
           'payment_method': 'paypal'
@@ -67,23 +70,31 @@ angular.module('battlehackApp')
 
       return paypalRestangular.one('payment').customPOST(request, '', {}, {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + authToken.value;
-      }).then(function(data) {
-        $log.debug('successfully submitted');
-
-      }, function(error) {
-        $log.debug(error);
-        $log.debug('error');
+        'Authorization': 'Bearer ' + authToken.value
       });
     };
 
-    var processPayment = function() {
-
+    var executePayment = function(payerId) {
+      var request = {'payer_id': payerId.toString()};
+      var executeUrl = localStorageService.get('execute');
+      var url = (executeUrl) ? executeUrl.substring(43) : null;
+      $log.debug(url);
+      if(!authToken) {
+        getAuthToken();
+      }
+      if(!url) {
+        return $q.reject('no execute url to be found');
+      }
+      return paypalRestangular.one(url).customPOST(request, '', {}, {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + authToken.value
+      });
     };
 
-
   	return {
-      getAuthToken: getAuthToken
+      getAuthToken: getAuthToken,
+      setupPayment: setupPayment,
+      executePayment: executePayment
   	};
 
   });

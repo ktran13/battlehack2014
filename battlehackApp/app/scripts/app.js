@@ -18,7 +18,7 @@ angular
     'ngTouch',
     'restangular',
     'ui.bootstrap',
-    'angular-local-storage'
+    'LocalStorageModule'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -37,6 +37,10 @@ angular
       .when('/profile', {
         templateUrl: 'views/profile.html',
         controller: 'profileCtrl as profileCtrl'
+      })
+      .when('/confirm', {
+        templateUrl: 'views/confirm.html',
+        controller: 'ConfirmCtrl as confirmCtrl'
       })
       .otherwise({
         redirectTo: '/'
