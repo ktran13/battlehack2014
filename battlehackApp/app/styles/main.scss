@@ -48,12 +48,11 @@ h1{
 .nav{
   font-family: "Open Sans Condensed";
   font-size: 1.8em;
-  padding-right:64px;
-  padding-top: 20px;
+  padding-right:100px;
 }
 .nav-logo {
-  width: 200px;
-  padding-left: 20px;
+  width: 35%;
+  padding-left: 100px;
 }
 
 /* Custom page footer */
@@ -80,9 +79,11 @@ h1{
 }
 
 .cover{
-    
-    width: 100%;
-   background:url("../images/background.jpg") no-repeat center center;
+  position: absolute; 
+  height:100%;
+  width: 100%;
+  background:url("../images/background.jpg") no-repeat center center;
+  z-index: -1;
 }   
 
 .main-bodies{
@@ -128,5 +129,8 @@ h1{
   .jumbotron {
     border-bottom: 0;
   }
+}
+.score-graph{
+  width:250px;
 }
 

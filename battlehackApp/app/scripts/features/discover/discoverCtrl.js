@@ -12,7 +12,12 @@
   var discoverCtrl = function ($log, $scope, dataService, paypalService, sharethisService) {
 
     var discoverCtrl = this;
+<<<<<<< HEAD
+    discoverCtrl.isCollapsed = false;
+    $log.debug(paypalService.test());
+=======
 
+>>>>>>> 9a718f53125a69ce3e9230e825b2232a90530d65
     $log.debug(sharethisService.test());
 
     dataService.getDatabase().then(function(data) {
