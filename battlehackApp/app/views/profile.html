@@ -5,6 +5,11 @@
 	<h3>{{ profileCtrl.nonprofit.name }} | SCORE: {{ profileCtrl.nonprofit.overall }}/70</h3><a href="{{profileCtrl.nonprofit.website}}">{{profileCtrl.nonprofit.website}}</a>  <p><i class="fa fa-map-marker"></i> Address: {{ profileCtrl.nonprofit.address }} <i class="fa fa-phone"></i>| <i class="fa fa-user"></i> Leadership: {{ profileCtrl.nonprofit.board_leadership }} | <i class="fa fa-user"></i> CEO: {{ profileCtrl.nonprofit.ceo }} </p>
 	</div>
 	<div div class="col-lg-4">
+		<div data-ng-show="profileCtrl.showConfirmEditView">
+			<button type="button" class="btn btn-info">Confirm Info</button>
+			<button type="button" class="btn btn-success">Edit</button>
+		</div>
+
 		<div data-ng-show="profileCtrl.showApproveButton">
 			<p>Donation Amount: {{ profileCtrl.donation.donationAmount | currency }} <i class="info fa fa-check-circle-o"></i></p>
 			<button type="button" data-ng-click="profileCtrl.approve()" class="btn btn-info">Sign into Paypal</button>

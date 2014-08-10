@@ -28,8 +28,17 @@ angular.module('battlehackApp')
   		return 'data test';
   	};
 
+    var getNineNinty = function() {
+      return Restangular.one('Nine90Servlet').get();
+    };
+
     var getNonprofit = function(id) {
-      return Restangular.one('QueryServlet').get({'id': id});
+      return Restangular.one('QueryServlet').get({'id': id}).then(function(data) {
+        data.results[0].name = id;
+        $log.debug(data);
+        localStorageService.add('donationName', data);
+        return data;
+      });
     };
 
     var getDonationName = function() {
@@ -49,7 +58,8 @@ angular.module('battlehackApp')
   		test: test,
       getDatabase: getDatabase,
       getNonprofit: getNonprofit,
-      getDonationName: getDonationName
+      getDonationName: getDonationName,
+      getNineNinty: getNineNinty
   	};
 
   });

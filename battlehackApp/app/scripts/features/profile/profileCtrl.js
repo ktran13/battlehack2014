@@ -30,6 +30,17 @@
       });
     }
 
+    var nineNinty = $routeParams.nineNinty;
+    $log.debug(nineNinty);
+    if(nineNinty) {
+      profileCtrl.showApproveButton = false;
+      profileCtrl.showDonateButton = false;
+      dataService.getNineNinty(nineNinty).then(function(data) {
+        profileCtrl.nonprofit = data.nine90results[0];
+      });
+      profileCtrl.showConfirmEditView = true;
+    }
+
     profileCtrl.approve = function() {
       var approveUrl = localStorageService.get('approve');
       $window.location.href = approveUrl;

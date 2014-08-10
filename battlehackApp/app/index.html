@@ -24,9 +24,9 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="fluid-container">   
-      <div class="header navbar-fixed-top" data-ng-controller="NavCtrl as navCtrl">
-       
+    <div class="fluid-container" data-ng-class="{'cover': navCtrl.showBackground }" data-ng-controller="NavCtrl as navCtrl">
+   
+      <div class="header navbar-fixed-top">         
         <ul class="nav nav-pills pull-right" data-ng-show="navCtrl.showNav">
           <li><a ng-href="#">Home <i class="fa fa-home"></i></a></li>
           <li><a ng-href="#/search">Search <i class="fa fa-search"></i></a></li>
@@ -35,20 +35,21 @@
         </ul>
         
         <!--<h3 class="text-muted">Fundmatch</h3> -->
-        <img src="images/fundmatch-logo.png" alt="fundmatch-logo" class="nav-logo"/>
-    
-    </div>    
+        <img src="images/fundmatch-logo.png" alt="fundmatch-logo" class="nav-logo" />
+        <p class="lead">Efficient Giving for Effective Nonprofits</p>
+        
+    </div> 
 
 
 <!--pulls everthing in -->
     
         <div class="container main-bodies">
-            <div ng-view=""></div>
+            <div ng-view="" ></div>
         </div>  
     
 
 
-      <div class="footer">
+      <div class="container footer">
         <p>Made With <span class="glyphicon glyphicon-heart"></span> At Battlehack Boston 2014</p>
       </div>
     </div>

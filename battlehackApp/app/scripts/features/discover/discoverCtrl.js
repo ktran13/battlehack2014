@@ -9,7 +9,7 @@
  * Controller of the battlehackApp
  */
   var controllerId = 'DiscoverCtrl';
-  var discoverCtrl = function ($log, $scope, dataService, paypalService, sharethisService) {
+  var discoverCtrl = function ($log, $scope, $location, dataService, paypalService, sharethisService) {
 
     var discoverCtrl = this;
 
@@ -26,12 +26,18 @@
       $log.debug(error);
     });
 
+    discoverCtrl.support = function(id) {
+      var merchantId = id;
+      $location.url('/profile?id='+merchantId);
+    };
+
 
   };
 
   angular.module('battlehackApp').controller(controllerId, [
     '$log',
     '$scope',
+    '$location',
     'dataService',
     'paypalService',
     'sharethisService',

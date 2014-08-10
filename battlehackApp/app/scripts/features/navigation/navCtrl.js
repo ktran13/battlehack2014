@@ -17,7 +17,7 @@
     paypalService.getAuthToken();
 
     navCtrl.donate = function() {
-      var merchantId = 'fm';
+      var merchantId = 'FundMatch';
       $location.url('/profile?id='+merchantId);
     };
 

@@ -2,10 +2,15 @@
 
 Search: <input ng-model="searchText">
 
-<div data-ng-repeat="nonprofit in discoverCtrl.nonprofits | filter:searchText | limitTo: 20">
+<div data-ng-repeat="nonprofit in discoverCtrl.nonprofits | filter:searchText | limitTo: 50">
 
 <div class="row">
-	<h3>{{ nonprofit.name }} | SCORE: {{ nonprofit.overall }}/70</h3><a href="{{nonprofit.website}}">{{nonprofit.website}}</a>  <p><i class="fa fa-map-marker"></i> Address: {{ nonprofit.address }} <i class="fa fa-phone"></i>| <i class="fa fa-user"></i> Leadership: {{ nonprofit.board_leadership }} | <i class="fa fa-user"></i> CEO: {{ nonprofit.ceo }} </p>
+  <div class="col-lg-8">
+  	<h3>{{ nonprofit.name }} | SCORE: {{ nonprofit.overall }}/70</h3><a href="{{nonprofit.website}}">{{nonprofit.website}}</a>  <p><i class="fa fa-map-marker"></i> Address: {{ nonprofit.address }} <i class="fa fa-phone"></i>| <i class="fa fa-user"></i> Leadership: {{ nonprofit.board_leadership }} | <i class="fa fa-user"></i> CEO: {{ nonprofit.ceo }} </p>
+  </div>
+  <div div class="col-lg-4">
+    <button type="button" data-ng-click="discoverCtrl.support(nonprofit.name)" class="btn btn-info">Support</button>
+  </div>
 </div>
 	
 	<div class="row">
