@@ -6,13 +6,14 @@
 	</div>
 	<div div class="col-lg-4">
 		<div data-ng-show="profileCtrl.showConfirmEditView">
-			<button type="button" class="btn btn-info">Confirm Info</button>
-			<button type="button" class="btn btn-success">Edit</button>
+			<button type="button" data-ng-click="profileCtrl.confirmedInfo()" data-ng-show="profileCtrl.showConfirm" class="btn btn-success">Confirm Info</button>
+			<span class="text-success" data-ng-hide="profileCtrl.showConfirm">Saved! <i class="info fa fa-check-circle-o"></i></span>
+			<button type="button" class="btn btn-info">Edit</button>
 		</div>
 
 		<div data-ng-show="profileCtrl.showApproveButton">
 			<p>Donation Amount: {{ profileCtrl.donation.donationAmount | currency }} <i class="info fa fa-check-circle-o"></i></p>
-			<button type="button" data-ng-click="profileCtrl.approve()" class="btn btn-info">Sign into Paypal</button>
+			<button type="button" data-ng-click="profileCtrl.approve()" class="btn btn-success">Sign into Paypal</button>
 			<p class="text-muted">* you will be redirected to paypal and will be able to review your donation before processing.</p>
 			</div>
 
@@ -28,7 +29,7 @@
 				  	</div>
 			  	</span>
 			  </div>
-			  <button type="button" data-ng-click="profileCtrl.donate(donationForm)" class="btn btn-info">Donate</button>
+			  <button type="button" data-ng-click="profileCtrl.donate(donationForm)" class="btn btn-success">Donate</button>
 			</form>
 			</div>
 	</div>

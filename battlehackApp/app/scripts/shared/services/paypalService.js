@@ -107,10 +107,15 @@ angular.module('battlehackApp')
       });
     };
 
+    var getApprovedUrl = function() {
+      return localStorageService.get('approve');
+    };
+
   	return {
       getAuthToken: getAuthToken,
       setupPayment: setupPayment,
-      executePayment: executePayment
+      executePayment: executePayment,
+      getApprovedUrl: getApprovedUrl
   	};
 
   });

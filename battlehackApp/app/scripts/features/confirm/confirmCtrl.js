@@ -43,6 +43,10 @@
       $location.path('/search');
     };
 
+    confirmCtrl.viewPast = function() {
+      $window.location.href = 'https://www.sandbox.paypal.com/us/cgi-bin/webscr?cmd=_history';
+    };
+
   };
 
   angular.module('battlehackApp').controller(controllerId, [

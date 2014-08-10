@@ -9,7 +9,7 @@
  * Controller of the battlehackApp
  */
   var controllerId = 'profileCtrl';
-  var profileCtrl = function ($log, $scope, $window, $routeParams, dataService, paypalService, sharethisService, localStorageService) {
+  var profileCtrl = function ($log, $scope, $window, $routeParams, dataService, paypalService, sharethisService) {
     var profileCtrl = this;
     
     $log.debug(sharethisService.test());
@@ -39,10 +39,11 @@
         profileCtrl.nonprofit = data.nine90results[0];
       });
       profileCtrl.showConfirmEditView = true;
+      profileCtrl.showConfirm = true;
     }
 
     profileCtrl.approve = function() {
-      var approveUrl = localStorageService.get('approve');
+      var approveUrl = paypalService.getApprovedUrl();
       $window.location.href = approveUrl;
     };
 
@@ -65,6 +66,10 @@
       }
     };
 
+    profileCtrl.confirmedInfo = function() {
+      profileCtrl.showConfirm = false;
+    };
+
   };
 
   angular.module('battlehackApp').controller(controllerId, [
@@ -75,7 +80,6 @@
     'dataService',
     'paypalService',
     'sharethisService',
-    'localStorageService',
     profileCtrl
   ]);
 

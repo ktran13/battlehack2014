@@ -6,6 +6,7 @@
 
 	<div class="center-block" data-ng-show="confirmCtrl.showThankyouView">
 		<h3>Thank you for donating {{ confirmCtrl.purchasingdata.transactions[0].amount.total | currency }} to {{ confirmCtrl.donationName }}!</h3>
-		<button type="button" data-ng-click="confirmCtrl.discover()" class="btn btn-info">Discover More Organizations</button>
+		<button type="button" data-ng-click="confirmCtrl.discover()" class="btn btn-success">Discover more organizations</button>
+		<button type="button" data-ng-click="confirmCtrl.viewPast()" class="btn btn-info">View past donations</button>
 	</div>
 </div>
