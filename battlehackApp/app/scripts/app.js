@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'restangular',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-local-storage'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -41,6 +42,9 @@ angular
         redirectTo: '/'
       });
   })
+  .config(['localStorageServiceProvider', function(localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('bh');
+  }])
   .config(function(RestangularProvider) {
     RestangularProvider.setBaseUrl('http://fundmatch.org:8080/FundMatchAPI/v1/');
   });

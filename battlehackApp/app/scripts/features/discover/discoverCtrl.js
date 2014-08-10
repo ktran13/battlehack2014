@@ -13,7 +13,6 @@
 
     var discoverCtrl = this;
 
-    $log.debug(paypalService.test());
     $log.debug(sharethisService.test());
 
     dataService.getDatabase().then(function(data) {

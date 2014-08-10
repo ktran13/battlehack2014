@@ -16,7 +16,10 @@
       'Karma'
     ];
 
-    $log.debug(paypalService.test());
+    $log.debug(paypalService.getAuthToken());
+
+    paypalService.getAuthToken();
+
     $log.debug(sharethisService.test());
 
     $log.debug(dataService.test());

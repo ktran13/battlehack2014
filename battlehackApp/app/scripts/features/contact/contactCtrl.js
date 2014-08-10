@@ -11,7 +11,6 @@
   var controllerId = 'contactCtrl';
   var contactCtrl = function ($log, $scope, dataService, paypalService, sharethisService) {
 
-    $log.debug(paypalService.test());
     $log.debug(sharethisService.test());
 
     $log.debug(dataService.test());

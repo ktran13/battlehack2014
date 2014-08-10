@@ -15,8 +15,7 @@
       'AngularJS',
       'Karma'
     ];
-
-    $log.debug(paypalService.test());
+    
     $log.debug(sharethisService.test());
 
     $log.debug(dataService.test());
