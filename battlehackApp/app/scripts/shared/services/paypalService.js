@@ -23,7 +23,7 @@ angular.module('battlehackApp').factory('authPaypalRestangular', ['Restangular',
  * Service of the battlehackApp
  */
 angular.module('battlehackApp')
-  .service('paypalService', function ($log, $q, paypalRestangular, authPaypalRestangular, localStorageService) {
+  .service('paypalService', ['$log', '$q', 'paypalRestangular', 'authPaypalRestangular', 'localStorageService', function ($log, $q, paypalRestangular, authPaypalRestangular, localStorageService) {
 
     var tokenLs = localStorageService.get('authToken');
 
@@ -118,7 +118,7 @@ angular.module('battlehackApp')
       getApprovedUrl: getApprovedUrl
   	};
 
-  });
+  }]);
 
 
 

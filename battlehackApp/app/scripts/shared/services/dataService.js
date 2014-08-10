@@ -9,7 +9,7 @@
  * Service of the battlehackApp
  */
 angular.module('battlehackApp')
-  .service('dataService', function ($log, $http, Restangular, localStorageService) {
+  .service('dataService', ['$log', '$http', 'Restangular', 'localStorageService', function ($log, $http, Restangular, localStorageService) {
 
     var nonprofits = null;
 
@@ -62,7 +62,7 @@ angular.module('battlehackApp')
       getNineNinty: getNineNinty
   	};
 
-  });
+  }]);
 
 
 

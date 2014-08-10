@@ -17,7 +17,7 @@ angular.module('battlehackApp').factory('sharethisRestangular', ['Restangular', 
  * Service of the battlehackApp
  */
 angular.module('battlehackApp')
-  .service('sharethisService', function (Restangular) {
+  .service('sharethisService', ['Restangular', function (Restangular) {
 
   	var test = function() {
   		return 'share this';
@@ -27,6 +27,6 @@ angular.module('battlehackApp')
   		test: test
   	};
 
-  });
+  }]);
 
 })();
